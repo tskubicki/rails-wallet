@@ -1,0 +1,17 @@
+<% if flash[:notice] %>
+	<p style="background-color: yellow"><%=flash[:notice]%></p>
+<% end %>
+<h1>Profile for <%=@user.first_name%></h1>
+
+<%= link_to("Log out", session_path(@user), method: :delete) %><br>
+<%= link_to("Make new card", new_card_path)%><br>
+
+<h2>Your cards </h2>
+<% @cards.each do |c| %>
+	<div style="border:thin solid black; padding:10px; width:250px; display:inline-block; float:left">
+		<p>Card number: <%= c.card_number %></p>
+		<p>Card type: <%= c.card_type %></p>
+		<p>Exp month: <%= c.expiration_month %></p>
+		<p>Exp year: <%= c.expiration_year %></p>
+	</div>
+<% end %>

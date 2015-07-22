@@ -1,0 +1,22 @@
+<% if flash[:notice] %>
+	<p style="background-color: yellow"><%=flash[:notice]%></p>
+<% end %>
+<% if @card.errors.full_messages.any? %>
+	<ul>
+		<% @card.errors.full_messages.each do |e| %>
+			<li> <%= e %> </li><br>
+		<% end %>
+	</ul>
+<% end %>
+
+<h1>Make a new card</h1>
+
+<%= form_for @card do |c| %>
+	<%=c.label :card_number %><br>
+	<%=c.text_field :card_number %><br>
+	<%=c.label :expiration_month %><br>
+	<%=c.text_field :expiration_month %><br>
+	<%=c.label :expiration_year %><br>
+	<%=c.text_field :expiration_year %><br>
+	<%=c.submit :create %>
+<% end %>

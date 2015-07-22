@@ -1,0 +1,31 @@
+<% if flash[:notice] %>
+	<p style="background-color: yellow"><%=flash[:notice]%></p>
+<% end %>
+<% if @user.errors.full_messages.any? %>
+	<ul>
+		<% @user.errors.full_messages.each do |e| %>
+			<li> <%= e %> </li><br>
+		<% end %>
+	</ul>
+<% end %>
+
+
+<h1>Register</h1>
+
+<%= form_for @user do |f| %>
+	<%=f.label :email %><br>
+	<%=f.text_field :email %><br>
+	<%=f.label :password %><br>
+	<%=f.password_field :password %><br>
+	<%=f.label :password_confirmation %><br>
+	<%=f.password_field :password_confirmation %><br>
+	<%=f.label :phone %><br>
+	<%=f.text_field :phone %><br>
+	<%=f.label :first_name %><br>
+	<%=f.text_field :first_name %><br>
+	<%=f.label :last_name %><br>
+	<%=f.text_field :last_name %><br>
+	<%=f.label :cash_balance %><br>
+	<%=f.text_field :cash_balance %><br>
+	<%=f.submit :register %>
+<% end %>
